@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 import CandidateCard from '../components/CandidateCard';
 import RawGithubUser from '../interfaces/RawGithubUser';
+import PlusForm from '../components/PlusForm';
+import MinusForm from '../components/MinusForm';
 
 interface User {
   avatar_url: string;
@@ -44,9 +46,9 @@ const CandidateSearch = () => {
     <section>
       <h1>Candidate Search</h1>
       {Array.isArray(users) && users.length !== 0 && <CandidateCard user={users[0]} />}
-      <div>
-        {/* <PlusForm />
-        <MinusForm /> */}
+      <div className='forms-container'>
+      <MinusForm />
+        <PlusForm />
       </div>
     </section>
   )

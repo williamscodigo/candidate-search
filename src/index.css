@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --cardWith: 320px;
 }
 
 a {
@@ -43,24 +45,6 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -82,6 +66,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 4em;
 }
 
 tr {
@@ -117,4 +102,80 @@ tbody tr:nth-child(odd) {
 .table {
   width: 80vw;
   table-layout: fixed;
+}
+
+.card {
+  width: var(--cardWith);
+  background-color: #000;
+  margin: 1em auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  border-radius: 20px 20px 0 0;
+}
+
+.card-body {
+  padding: 0 1em 1em 1em;
+}
+
+.forms-container {
+  width: var(--cardWith);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.forms-container form:first-child {
+  justify-self: start;
+  margin-left: 1em;
+}
+.forms-container form:last-child {
+  justify-self: end;
+  margin-right: 1em;
+}
+
+button {
+  width: 20px;
+  border-radius: 100%;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.plus-btn {
+  background-color: darkgreen;
+  display: flex;
+  justify-content: center;
+}
+
+.plus-btn:hover {
+  background-color: green;
+}
+
+.minus-btn {
+  background-color: darkred;
+  display: flex;
+  justify-content: center;
+}
+
+.minus-btn:hover {
+  background-color: red;
 }
