@@ -179,3 +179,9 @@ button:focus-visible {
 .minus-btn:hover {
   background-color: red;
 }
+
+.view-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

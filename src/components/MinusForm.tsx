@@ -1,12 +1,13 @@
+interface MinusFormProps {
+  onSubmit: () => void;
+}
 
-
-export default function MinusForm() {
+export default function MinusForm({onSubmit}: MinusFormProps) {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
 
-      // Call backend API to add actor to favorites
-      console.log("minus form submitted!");
+      onSubmit(); //trigger the onMinus callback
   
     }
 

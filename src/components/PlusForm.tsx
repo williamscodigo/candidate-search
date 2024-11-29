@@ -1,12 +1,13 @@
+interface PlusFormProps {
+  onSubmit: () => void;
+}
 
-
-export default function PlusForm() {
+export default function PlusForm({ onSubmit }: PlusFormProps) {
 
       function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        // Call backend API to add actor to favorites
-        console.log("plus form submitted!");
+        onSubmit(); //trigger onPlus callback
     
       }
 
