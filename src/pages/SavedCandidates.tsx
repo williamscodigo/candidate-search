@@ -10,17 +10,39 @@ const SavedCandidates = () => {
     //check localStorage first
     const localData = getLocalData('candidates');
     localData.length !== 0 ? setCandidates(localData) : setCandidates([]);
-  }, []) //empty array this will run once when component loads
+  }, []) //will only run once when component mounts
 
   return (
     <>
       <h1>Potential Candidates</h1>
-      <ul>
+      {/* candidate table instead of list here - loop to display table row */}
+      <table className="table">
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Company</th>
+          <th>Bio</th>
+          <th>Reject</th>
+        </tr>
+        </thead>
+        <tbody>
       {Array.isArray(candidates) && candidates.length > 0 && candidates.map((candidate) => {
-        return <li>{candidate.login}</li>
+        return (
+          <tr>
+            <td className="image-center"><img src={candidate.avatar_url} alt={candidate.login + " avatar (image)"} /></td>
+            <td>{candidate.login}</td>
+            <td>{candidate.email}</td>
+            <td>{candidate.company}</td>
+            <td>{candidate.bio}</td>
+            <td>delete candidate</td>
+          </tr>
+        )
       })
       }
-      </ul>
+      </tbody>
+      </table>
     </>
   );
 };

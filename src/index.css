@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --cardWith: 320px;
+  --cardHeight: 640px;
 }
 
 a {
@@ -102,10 +103,25 @@ tbody tr:nth-child(odd) {
 .table {
   width: 80vw;
   table-layout: fixed;
+  border-collapse: collapse;
 }
+
+th, td {
+  border-left: #000 1px solid;
+}
+
+.table img {
+  width: 50px;
+  height: 50px;
+}
+
+.image-center {
+  text-align: center;
+} 
 
 .card {
   width: var(--cardWith);
+  height: var(--cardHeight);
   background-color: #000;
   margin: 1em auto;
   border-radius: 20px;
