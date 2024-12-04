@@ -1,33 +1,59 @@
-# React + TypeScript + Vite
+# CANDIDATE SEARCH ![Static Badge](https://img.shields.io/badge/license-MIT-blue)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This Candidate Search Application is a React-based tool designed for efficiently browsing and saving potential candidates. Users can review a curated list of candidates and either save them to a list of potential hires or skip them. The application ensures data persistence using local storage, making it ideal for quick candidate review processes.
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation 
 
-## Expanding the ESLint configuration
+To run this project in your local evironment, follow these steps:
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the Repository:
 
-* Configure the top-level `parserOptions` property as follows:
+```bash
+   git clone git@github.com:williamscodigo/candidate-search.git
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
 ```
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
+2. Navigate to the Project Directory:
 
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+```bash
+    cd candidate-search
+```
+
+3. Install Dependencies:
+
+```bash
+    npm install
+```
+
+4. Make sure you modify .env file (create file if it doesn't exist):
+
+```
+    VITE_GITHUB_TOKEN=github-personal-fine-grained-token
+```
+
+5. Start the app:
+
+```bash
+    npm run dev
+```
+
+## Usage
+
+Live On Render: [https://candidate-search-ag93.onrender.com/](https://candidate-search-ag93.onrender.com/)
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- API (Github)
+
+## Credits
+Worked with [https://github.com/mwahba624](https://github.com/mwahba624) to complete this project.
+
+## License
+[https://opensource.org/license/mit](https://opensource.org/license/mit)

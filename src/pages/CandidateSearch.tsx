@@ -22,12 +22,14 @@ const CandidateSearch = () => {
         const formattedUsers = await data.reduce(async (accPromise: Promise<User[]>, user: RawGithubUser) => {
           const acc = await accPromise; // Await the accumulated users array
           const rawUser = await searchGithubUser(user.login);
-        
+      
+          console.log('rawUser:', rawUser);
           // Skip invalid data
           if (rawUser && Object.keys(rawUser).length > 0) {
             acc.push({
               avatar_url: rawUser.avatar_url,
               login: rawUser.login,
+              githubURL: rawUser.html_url,
               location: rawUser.location,
               email: rawUser.email,
               company: rawUser.company,

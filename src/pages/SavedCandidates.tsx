@@ -43,7 +43,7 @@ const SavedCandidates = () => {
         return (
           <tr key={index}>
             <td className="image-center"><img src={candidate.avatar_url} alt={candidate.login + " avatar (image)"} /></td>
-            <td>{candidate.login}</td>
+            <td><a href={candidate.githubURL} target="_blank">{candidate.login}</a></td>
             <td>{candidate.email}</td>
             <td>{candidate.company}</td>
             <td>{candidate.bio}</td>
