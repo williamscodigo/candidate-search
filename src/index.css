@@ -208,3 +208,46 @@ td .minus-btn {
   justify-content: center;
   align-items: center;
 }
+
+.loading-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff; /* Customize as needed */
+  text-align: center;
+}
+
+.dots {
+  display: inline-block;
+  width: 24px; /* Reserve space for the dots */
+  text-align: left; /* Align dots to the left */
+}
+
+.dots span {
+  opacity: 0; /* Start dots invisible */
+  animation: fade 1.5s infinite; /* Apply animation */
+}
+
+/* Delay animations for each dot */
+.dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Keyframes for smooth fade-in and fade-out */
+@keyframes fade {
+  0%, 100% {
+    opacity: 0; /* Invisible at start and end */
+  }
+  50% {
+    opacity: 1; /* Fully visible at midpoint */
+  }
+}
+
+

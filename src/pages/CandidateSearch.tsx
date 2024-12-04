@@ -5,25 +5,27 @@ import CandidateCard from '../components/CandidateCard';
 import RawGithubUser from '../interfaces/RawGithubUser';
 import User from '../interfaces/User';
 import { setLocalData, getLocalData, clearLocalData } from '../utils/localData';
+import LoadingDots from '../components/LoadingDots';
 
 const CandidateSearch = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true); // State for loading status
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
-        // First, fetch raw data from GitHub
+        setLoading(true); // Set loading to true at the start of fetching
+
+        // Fetch raw data from GitHub
         const data = await searchGithub();
 
         // Map over users and fetch detailed data - discard empty or invalid users
         const formattedUsers = await data.reduce(async (accPromise: Promise<User[]>, user: RawGithubUser) => {
-          const acc = await accPromise; // Await the accumulated users array
+          const acc = await accPromise;
           const rawUser = await searchGithubUser(user.login);
-      
-          console.log('rawUser:', rawUser);
+
           // Skip invalid data
           if (rawUser && Object.keys(rawUser).length > 0) {
             acc.push({
@@ -36,17 +38,16 @@ const CandidateSearch = () => {
               bio: rawUser.bio,
             });
           }
-        
           return acc;
-        }, Promise.resolve([] as User[])); // Ensure initial accumulator is an empty array of type User[]
-        
-        
+        }, Promise.resolve([] as User[]));
 
         // Save data to local storage and state
         setLocalData('preCandidates', formattedUsers);
         setUsers(formattedUsers);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
@@ -54,14 +55,13 @@ const CandidateSearch = () => {
     const localData = getLocalData('preCandidates');
     if (localData && localData.length > 0) {
       setUsers(localData); // Use cached data
+      setLoading(false); // No need to fetch, so set loading to false
     } else {
       fetchData(); // Fetch new data
     }
   }, []); // Empty dependency array ensures this runs only once
 
-  // Handlers for PlusForm and MinusForm
   const handlePlusUser = () => {
-    //add user to candidates array in local storage
     const candidates = [...getLocalData('candidates'), users[currentIndex]];
     setLocalData('candidates', candidates);
 
@@ -84,22 +84,27 @@ const CandidateSearch = () => {
 
   return (
     <section>
-    <h1>Candidate Search</h1>
-    {users.length > 0 && (
-      <>
-        {/* Display current index out of total users */}
-        <div className="view-status">
-          {`${currentIndex + 1} / ${users.length}`}
-        </div>
+      <h1>Candidate Search</h1>
+      {loading ? (
+        <LoadingDots /> // Show loading dots while loading is true
+      ) : (
+        <>
+          {users.length > 0 ? (
+            <>
+              <div className="view-status">{`${currentIndex + 1} / ${users.length}`}</div>
 
-        <CandidateCard
-          user={users[currentIndex]}
-          onMinus={handleMinusUser}
-          onPlus={handlePlusUser}
-        />
-      </>
-    )}
-  </section>
+              <CandidateCard
+                user={users[currentIndex]}
+                onMinus={handleMinusUser}
+                onPlus={handlePlusUser}
+              />
+            </>
+          ) : (
+            <div>No candidates available to review.</div>
+          )}
+        </>
+      )}
+    </section>
   );
 };
 
