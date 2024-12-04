@@ -192,6 +192,12 @@ button:focus-visible {
   justify-content: center;
 }
 
+
+td .minus-btn {
+  font-size: large;
+  margin: 0 auto;
+}
+
 .minus-btn:hover {
   background-color: red;
 }
