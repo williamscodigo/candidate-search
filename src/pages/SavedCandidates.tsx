@@ -18,7 +18,6 @@ const SavedCandidates = () => {
     e.preventDefault();
 
     //remove from state and update local storage
-    console.log(index);
     const updatedCandidates = [...candidates];
     updatedCandidates.splice(index, 1);
     setCandidates(updatedCandidates);
